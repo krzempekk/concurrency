@@ -17,7 +17,7 @@ public class Philosophers {
         forks[index].release();
     }
 
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) {
         for (int i = 0; i < philosophers.length; i++) {
             philosophers[i] = new Philosopher(i);
             forks[i] = new BinarySemaphore(true);
@@ -62,5 +62,3 @@ public class Philosophers {
         }
     }
 }
-
-// zaimplementowac rozwiazanie z lokajem
