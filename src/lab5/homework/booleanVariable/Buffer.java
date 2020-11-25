@@ -1,4 +1,4 @@
-package lab4.zad1;
+package lab5.homework.booleanVariable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,11 +25,7 @@ public class Buffer {
     void produce(List<Integer> newUnits, int producerIndex) throws InterruptedException {
         lock.lock();
         try {
-            while (lock.hasWaiters(firstProducer)) {
-                System.out.println("Producer " + producerIndex + " waits, because firstProducer has waiters");
-                restProducers.await();
-            }
-            //            while (isFirstProducer) restProducers.await();
+            while (isFirstProducer) restProducers.await();
             isFirstProducer = true;
 
             while (this.units.size() > this.maxUnits - newUnits.size()) {
@@ -52,11 +48,7 @@ public class Buffer {
     List<Integer> consume(int unitsCount, int consumerIndex) throws InterruptedException {
         lock.lock();
         try {
-            while (lock.hasWaiters(firstConsumer)) {
-                System.out.println("Consumer " + consumerIndex + " waits, because firstConsumer has waiters");
-                restConsumers.await();
-            }
-            //            while (isFirstConsumer) restConsumers.await();
+            while (isFirstConsumer) restConsumers.await();
             isFirstConsumer = true;
 
             while (this.units.size() < unitsCount) {
@@ -80,5 +72,3 @@ public class Buffer {
         }
     }
 }
-
-// lab5.homework.hasWaiters - wyciekanie zasobów

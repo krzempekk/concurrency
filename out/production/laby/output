@@ -1,0 +1,42 @@
+Producer 0 produced 2 units (2 units in buffer)
+Producer 0 produced 4 units (6 units in buffer)
+Consumer 0 consumed 5 units (1 units in buffer)
+Consumer 0 waits for 5 units (1 units in buffer)
+Consumer 1 waits, because firstConsumer has waiters
+Consumer 2 waits, because firstConsumer has waiters
+Producer 0 produced 5 units (6 units in buffer)
+Producer 0 waits with 5 units (6 units in buffer)
+Consumer 0 consumed 5 units (1 units in buffer)
+Consumer 0 waits for 2 units (1 units in buffer)
+Consumer 1 waits, because firstConsumer has waiters
+Producer 0 produced 5 units (6 units in buffer)
+Consumer 0 consumed 2 units (4 units in buffer)
+Consumer 0 consumed 4 units (0 units in buffer)
+Consumer 0 waits for 3 units (0 units in buffer)
+Producer 0 produced 2 units (2 units in buffer)
+Consumer 2 waits for 3 units (2 units in buffer)
+Consumer 1 waits, because firstConsumer has waiters
+Consumer 0 waits for 3 units (2 units in buffer)
+Producer 0 produced 3 units (5 units in buffer)
+Consumer 2 consumed 3 units (2 units in buffer)
+Consumer 2 waits, because firstConsumer has waiters
+Producer 0 produced 2 units (4 units in buffer)
+Producer 0 produced 1 units (5 units in buffer)
+Consumer 1 consumed 4 units (1 units in buffer)
+Consumer 1 consumed 1 units (0 units in buffer)
+Consumer 1 waits for 3 units (0 units in buffer)
+Consumer 0 waits for 3 units (0 units in buffer)
+Producer 0 produced 5 units (5 units in buffer)
+Producer 0 produced 3 units (8 units in buffer)
+Consumer 2 consumed 4 units (4 units in buffer)
+Consumer 2 waits for 5 units (4 units in buffer)
+Consumer 1 consumed 3 units (1 units in buffer)
+Consumer 0 waits for 3 units (1 units in buffer)
+Producer 0 produced 3 units (4 units in buffer)
+Consumer 1 waits, because firstConsumer has waiters
+Consumer 2 waits for 5 units (4 units in buffer)
+Producer 0 produced 5 units (9 units in buffer)
+Consumer 0 consumed 3 units (6 units in buffer)
+Consumer 0 waits, because firstConsumer has waiters
+Producer 0 waits with 5 units (6 units in buffer)
+Consumer 1 waits, because firstConsumer has waiters

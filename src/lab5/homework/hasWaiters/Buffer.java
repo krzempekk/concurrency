@@ -1,4 +1,4 @@
-package lab4.zad1;
+package lab5.homework.hasWaiters;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,9 +14,6 @@ public class Buffer {
     Condition firstConsumer = lock.newCondition();
     Condition restConsumers = lock.newCondition();
 
-    boolean isFirstProducer = false;
-    boolean isFirstConsumer = false;
-
     public Buffer(int size) {
         this.units = new ArrayList<>();
         this.maxUnits = size;
@@ -29,8 +26,6 @@ public class Buffer {
                 System.out.println("Producer " + producerIndex + " waits, because firstProducer has waiters");
                 restProducers.await();
             }
-            //            while (isFirstProducer) restProducers.await();
-            isFirstProducer = true;
 
             while (this.units.size() > this.maxUnits - newUnits.size()) {
                 System.out.println("Producer " + producerIndex + " waits with " + newUnits.size() + " units (" + units.size() + " units in buffer)");
@@ -42,8 +37,6 @@ public class Buffer {
 
             restProducers.signal();
             firstConsumer.signal();
-
-            isFirstProducer = false;
         } finally {
             lock.unlock();
         }
@@ -56,8 +49,6 @@ public class Buffer {
                 System.out.println("Consumer " + consumerIndex + " waits, because firstConsumer has waiters");
                 restConsumers.await();
             }
-            //            while (isFirstConsumer) restConsumers.await();
-            isFirstConsumer = true;
 
             while (this.units.size() < unitsCount) {
                 System.out.println("Consumer " + consumerIndex + " waits for " + unitsCount + " units (" + units.size() + " units in buffer)");
@@ -73,7 +64,6 @@ public class Buffer {
             restConsumers.signal();
             firstProducer.signal();
 
-            isFirstConsumer = false;
             return newUnits;
         } finally {
             lock.unlock();
