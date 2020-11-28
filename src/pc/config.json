@@ -1,0 +1,14 @@
+{
+  "java": {
+    "ao": "/home/kamil/.jdks/openjdk-15/bin/java -javaagent:/opt/idea-IU-202.7660.26/lib/idea_rt.jar=41951:/opt/idea-IU-202.7660.26/bin -Dfile.encoding=UTF-8 -classpath /home/kamil/studia/5_semestr/tw/laby/out/production/laby pc.ao.Driver",
+    "synchronous": "/home/kamil/.jdks/openjdk-15/bin/java -javaagent:/opt/idea-IU-202.7660.26/lib/idea_rt.jar=45811:/opt/idea-IU-202.7660.26/bin -Dfile.encoding=UTF-8 -classpath /home/kamil/studia/5_semestr/tw/laby/out/production/laby pc.synchronous.Driver"
+  },
+  "arguments": {
+    "producer_count": 5,
+    "consumer_count": 5,
+    "buffer_size": 20,
+    "max_units_request": 10,
+    "producer_file_prefix": "producer",
+    "consumer_file_prefix": "consumer"
+  }
+}

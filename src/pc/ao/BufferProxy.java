@@ -1,16 +1,12 @@
-package ao;
+package pc.ao;
 
 public class BufferProxy {
-    private Scheduler scheduler;
+    Scheduler scheduler;
     private Buffer buffer;
 
     public BufferProxy(int maxUnitsCount) {
         this.scheduler = new Scheduler();
         this.buffer = new Buffer(maxUnitsCount);
-    }
-
-    public void runScheduler() {
-        this.scheduler.dispatch();
     }
 
     public Future produce(int unitsCount) {
