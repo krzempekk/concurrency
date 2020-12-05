@@ -1,14 +1,85 @@
 {
-  "java": {
-    "ao": "/home/kamil/.jdks/openjdk-15/bin/java -javaagent:/opt/idea-IU-202.7660.26/lib/idea_rt.jar=41951:/opt/idea-IU-202.7660.26/bin -Dfile.encoding=UTF-8 -classpath /home/kamil/studia/5_semestr/tw/laby/out/production/laby pc.ao.Driver",
-    "synchronous": "/home/kamil/.jdks/openjdk-15/bin/java -javaagent:/opt/idea-IU-202.7660.26/lib/idea_rt.jar=45811:/opt/idea-IU-202.7660.26/bin -Dfile.encoding=UTF-8 -classpath /home/kamil/studia/5_semestr/tw/laby/out/production/laby pc.synchronous.Driver"
-  },
-  "arguments": {
-    "producer_count": 5,
-    "consumer_count": 5,
-    "buffer_size": 20,
-    "max_units_request": 10,
-    "producer_file_prefix": "producer",
-    "consumer_file_prefix": "consumer"
-  }
+  "java": "/home/kamil/.jdks/openjdk-15/bin/java -javaagent:/opt/idea-IU-202.7660.26/lib/idea_rt.jar=35113:/opt/idea-IU-202.7660.26/bin -Dfile.encoding=UTF-8 -classpath /home/kamil/studia/5_semestr/tw/laby/out/production/laby:/usr/lib/python3.8:/usr/lib/python3.8/lib-dynload:/usr/local/lib/python3.8/dist-packages:/usr/lib/python3/dist-packages:/home/kamil/.cache/JetBrains/IntelliJIdea2020.2/python_stubs/-1247971761 pc.Driver",
+  "scenarios": [
+    {
+      "name": "Scenario 1",
+      "disabled": true,
+      "baseParameters": {
+        "producerFilePrefix": "producer",
+        "consumerFilePrefix": "consumer",
+        "producerCount": 10,
+        "consumerCount": 10,
+        "bufferSize": 100,
+        "maxUnitsRequest": 50,
+        "timeQuantum": 1,
+        "primaryTaskLength": 1,
+        "secondaryTaskLength": 1,
+        "requestsCount": 200,
+        "requestsSum": 5000
+      },
+      "runsNumber": 7,
+      "variants": [
+        {
+          "requestsCount": 50,
+          "requestsSum": 500
+        },
+        {
+          "requestsCount": 100,
+          "requestsSum": 1000
+        },
+        {
+          "requestsCount": 150,
+          "requestsSum": 1500
+        },
+        {
+          "requestsCount": 200,
+          "requestsSum": 2000
+        },
+        {
+          "requestsCount": 250,
+          "requestsSum": 2500
+        }
+      ],
+      "axes": {
+        "x": "requestsCount"
+      }
+    },
+    {
+      "name": "Scenario 3",
+      "baseParameters": {
+        "producerFilePrefix": "producer",
+        "consumerFilePrefix": "consumer",
+        "producerCount": 10,
+        "consumerCount": 10,
+        "bufferSize": 100,
+        "maxUnitsRequest": 50,
+        "timeQuantum": 1,
+        "primaryTaskLength": 1,
+        "secondaryTaskLength": 50,
+        "requestsCount": 100,
+        "requestsSum": 1000
+      },
+      "runsNumber": 7,
+      "variants": [
+        {
+          "primaryTaskLength": 1
+        },
+        {
+          "primaryTaskLength": 5
+        },
+        {
+          "primaryTaskLength": 10
+        },
+        {
+          "primaryTaskLength": 15
+        },
+        {
+          "primaryTaskLength": 20
+        }
+      ],
+      "axes": {
+        "x": "primaryTaskLength"
+      }
+    }
+  ]
 }

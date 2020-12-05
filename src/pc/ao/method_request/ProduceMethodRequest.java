@@ -1,4 +1,7 @@
-package pc.ao;
+package pc.ao.method_request;
+
+import pc.ao.core.Buffer;
+import pc.ao.core.Future;
 
 public class ProduceMethodRequest implements MethodRequest {
     private Future future;

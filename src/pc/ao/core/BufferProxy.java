@@ -1,12 +1,15 @@
-package pc.ao;
+package pc.ao.core;
+
+import pc.ao.method_request.ConsumeMethodRequest;
+import pc.ao.method_request.ProduceMethodRequest;
 
 public class BufferProxy {
-    Scheduler scheduler;
+    public Scheduler scheduler;
     private Buffer buffer;
 
-    public BufferProxy(int maxUnitsCount) {
+    public BufferProxy(int maxUnitsCount, int primaryTaskLength) {
         this.scheduler = new Scheduler();
-        this.buffer = new Buffer(maxUnitsCount);
+        this.buffer = new Buffer(maxUnitsCount, primaryTaskLength);
     }
 
     public Future produce(int unitsCount) {

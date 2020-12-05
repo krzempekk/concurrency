@@ -3,6 +3,38 @@ import os
 import time
 import random
 import numpy as np
+import matplotlib.pyplot as plt
+import matplotlib.tri as mtri
+
+synch_color = (49 / 255, 92 / 255, 43 / 255, 0.7)
+ao_color = (233 / 255, 79 / 255, 55 / 255, 0.7)
+
+
+def plot_2d(title, x_name, x_values, sync_values, ao_values, filename):
+    plt.title(title)
+    plt.xlabel(x_name)
+    plt.ylabel("Time (s)")
+    plt.scatter(x_values, sync_values, label="Synchronous", color=synch_color)
+    plt.scatter(x_values, ao_values, label="AO", color=ao_color)
+    plt.legend()
+    plt.savefig(filename, dpi=600, bbox_inches='tight')
+    # plt.show()
+    plt.clf()
+
+
+def plot_3d(title, x_name, x_values, y_name, y_values, sync_values, ao_values, filename):
+    fig = plt.figure()
+    ax = fig.add_subplot(111, projection='3d')
+    ax.set_title(title)
+    ax.set_xlabel(x_name)
+    ax.set_ylabel(y_name)
+    ax.set_zlabel('Time (s)')
+    ax.plot_trisurf(x_values, y_values, sync_values, label="Synchronous", color=synch_color)
+    ax.plot_trisurf(x_values, y_values, ao_values, label="AO", color=ao_color)
+    # ax.legend()
+    fig.savefig(filename, dpi=600, bbox_inches='tight')
+    # plt.show()
+    plt.clf()
 
 
 def generate_random_integers(sum, n, min_v, max_v):
@@ -17,55 +49,98 @@ def generate_random_integers(sum, n, min_v, max_v):
     return array
 
 
-def generate_tests(producer_count, consumer_count, max_units_request):
-    producer_request_amount = producer_count * 10000
-    consumer_request_amount = consumer_count * 10000
-    requests_sum = producer_request_amount * (max_units_request / 2)
-
-    producer_requests = generate_random_integers(requests_sum, producer_request_amount, 1, max_units_request)
-    consumer_requests = generate_random_integers(requests_sum, consumer_request_amount, 1, max_units_request)
-
-    producer_chunks = np.array_split(producer_requests, producer_count)
-
-    consumer_chunks = np.array_split(consumer_requests, consumer_count)
-
-    for i in range(producer_count):
-        with open(f"../../resources/producer{i}", "w") as file:
-            for number in producer_chunks[i]:
-                file.write(f"{number}\n")
-
-    for i in range(consumer_count):
-        with open(f"../../resources/consumer{i}", "w") as file:
-            for number in consumer_chunks[i]:
+# requests_count <= requests_sum <= requests_count * max_units_request
+def generate_test(file_prefix, threads_count, requests_count, max_units_request, requests_sum):
+    requests = generate_random_integers(requests_sum, requests_count, 1, max_units_request)
+    chunks = np.array_split(requests, threads_count)
+    for i in range(threads_count):
+        with open(f"../../out/production/laby/{file_prefix}{i}", "w") as file:
+            for number in chunks[i]:
                 file.write(f"{number}\n")
 
 
-def run():
+def run_scenario(java, scenario, runs_number=1):
+    java_arguments_names = [
+        "producerFilePrefix",
+        "consumerFilePrefix",
+        "producerCount",
+        "consumerCount",
+        "bufferSize",
+        "maxUnitsRequest",
+        "timeQuantum",
+        "primaryTaskLength",
+        "secondaryTaskLength"
+    ]
+
+    java_arguments_values = map(lambda argument_name: str(scenario[argument_name]), java_arguments_names)
+    java_arguments_str = " ".join(java_arguments_values)
+
+    generate_test(
+        scenario["producerFilePrefix"],
+        scenario["producerCount"],
+        scenario["requestsCount"],
+        scenario["maxUnitsRequest"],
+        scenario["requestsSum"],
+    )
+
+    generate_test(
+        scenario["consumerFilePrefix"],
+        scenario["consumerCount"],
+        scenario["requestsCount"],
+        scenario["maxUnitsRequest"],
+        scenario["requestsSum"],
+    )
+
+    synchronous_time = 0
+    ao_time = 0
+
+    for i in range(runs_number):
+        synchronous_start = time.time()
+        os.system(f"{java} synchronous {java_arguments_str}")
+        synchronous_end = time.time()
+        synchronous_time += synchronous_end - synchronous_start
+
+        ao_start = time.time()
+        os.system(f"{java} ao {java_arguments_str}")
+        ao_end = time.time()
+        ao_time += ao_end - ao_start
+
+    return synchronous_time / runs_number, ao_time / runs_number
+
+
+def run_from_config():
     config = json.load(open("config.json"))
-    java_ao = config['java']['ao']
-    java_synchronous = config['java']['synchronous']
+    java = config["java"]
+    scenarios = config["scenarios"]
+    filtered_scenarios = filter(lambda scenario: not scenario.get("disabled"), scenarios)
+    for scenario in filtered_scenarios:
+        name = scenario["name"]
+        base_parameters = scenario["baseParameters"]
+        runs_number = scenario["runsNumber"]
+        variants = scenario["variants"]
+        axes = scenario["axes"]
+        x_name, y_name = axes.get("x"), axes.get("y")
+        x_values, y_values, synch_values, ao_values = [], [], [], []
+        is_3d = y_name is not None
 
-    arguments = config['arguments']
-    arguments_str = f"{arguments['producer_count']} " \
-                    f"{arguments['consumer_count']} " \
-                    f"{arguments['buffer_size']} " \
-                    f"{arguments['max_units_request']} " \
-                    f"{arguments['producer_file_prefix']} " \
-                    f"{arguments['consumer_file_prefix']}"
+        print(name)
+        for variant in variants:
+            synchronous_time, ao_time = run_scenario(java, {**base_parameters, **variant}, runs_number)
 
-    generate_tests(int(arguments['producer_count']), int(arguments['consumer_count']),
-                   int(arguments['max_units_request']))
+            x_values.append(variant[x_name])
+            if is_3d:
+                y_values.append(variant[y_name])
+            synch_values.append(synchronous_time)
+            ao_values.append(ao_time)
 
-    start = time.time()
-    os.system(f"{java_ao} {arguments_str}")
-    end = time.time()
-    print(f"AO time: {end - start}")
+            print(f"\t{variant}")
+            print(f"\t\tSynchronous time: {synchronous_time}")
+            print(f"\t\tAO time: {ao_time}")
 
-    start = time.time()
-    os.system(f"{java_synchronous} {arguments_str}")
-    end = time.time()
-    print(f"Synchronous time: {end - start}")
+        if is_3d:
+            plot_3d(name, x_name, x_values, y_name, y_values, synch_values, ao_values, f"figures/{name}.png")
+        else:
+            plot_2d(name, x_name, x_values, synch_values, ao_values, f"figures/{name}.png")
 
 
-# generate_tests(6, 6, 10)
-run()
+run_from_config()

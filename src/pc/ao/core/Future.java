@@ -1,4 +1,4 @@
-package pc.ao;
+package pc.ao.core;
 
 public class Future {
     private int result;

@@ -1,4 +1,4 @@
-package pc.ao;
+package pc.ao.method_request;
 
 public interface MethodRequest {
     boolean guard();

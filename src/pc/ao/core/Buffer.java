@@ -1,12 +1,22 @@
-package pc.ao;
+package pc.ao.core;
 
 public class Buffer {
     private int currentUnitsCount;
     private int maxUnitsCount;
+    private int primaryTaskLength;
 
-    public Buffer(int maxUnitsCount) {
+    public Buffer(int maxUnitsCount, int primaryTaskLength) {
         this.maxUnitsCount = maxUnitsCount;
         this.currentUnitsCount = 0;
+        this.primaryTaskLength = primaryTaskLength;
+    }
+
+    private void work() {
+        try {
+            Thread.sleep(primaryTaskLength);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
     public int getCurrentUnitsCount() {
@@ -17,13 +27,15 @@ public class Buffer {
         return maxUnitsCount;
     }
 
-    int produce(int unitsCount) {
+    public int produce(int unitsCount) {
         currentUnitsCount += unitsCount;
+        work();
         return currentUnitsCount;
     }
 
-    int consume(int unitsCount) {
+    public int consume(int unitsCount) {
         currentUnitsCount -= unitsCount;
+        work();
         return currentUnitsCount;
     }
 }

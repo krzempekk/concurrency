@@ -1,4 +1,7 @@
-package pc.ao;
+package pc.ao.core;
+
+import pc.ao.method_request.ConsumeMethodRequest;
+import pc.ao.method_request.MethodRequest;
 
 import java.util.ArrayList;
 import java.util.List;

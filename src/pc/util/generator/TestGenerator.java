@@ -1,4 +1,4 @@
-package pc.util;
+package pc.util.generator;
 
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -7,10 +7,10 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class Random {
+public class TestGenerator implements OrderGenerator {
     private ArrayList<Integer> numbers;
 
-    public Random(String fileName) {
+    public TestGenerator(String fileName) {
         this.numbers = new ArrayList<>();
         try {
             String filePath = Objects.requireNonNull(getClass().getClassLoader().getResource(fileName)).getPath();
@@ -24,11 +24,11 @@ public class Random {
         }
     }
 
-    public int getRandomNumber() {
+    public int getNextOrder() {
         return this.numbers.remove(0);
     }
 
-    public boolean hasMoreNumbers() {
+    public boolean hasMoreOrders() {
         return !this.numbers.isEmpty();
     }
 }
