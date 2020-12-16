@@ -1,8 +1,96 @@
 {
-  "java": "/home/kamil/.jdks/openjdk-15/bin/java -javaagent:/opt/idea-IU-202.7660.26/lib/idea_rt.jar=35113:/opt/idea-IU-202.7660.26/bin -Dfile.encoding=UTF-8 -classpath /home/kamil/studia/5_semestr/tw/laby/out/production/laby:/usr/lib/python3.8:/usr/lib/python3.8/lib-dynload:/usr/local/lib/python3.8/dist-packages:/usr/lib/python3/dist-packages:/home/kamil/.cache/JetBrains/IntelliJIdea2020.2/python_stubs/-1247971761 pc.Driver",
+  "java": "/home/kamil/.jdks/openjdk-15/bin/java -javaagent:/opt/idea-IU-202.7660.26/lib/idea_rt.jar=42221:/opt/idea-IU-202.7660.26/bin -Dfile.encoding=UTF-8 -classpath /home/kamil/studia/5_semestr/tw/laby/out/production/laby:/usr/lib/python3.8:/usr/lib/python3.8/lib-dynload:/usr/local/lib/python3.8/dist-packages:/usr/lib/python3/dist-packages:/home/kamil/.cache/JetBrains/IntelliJIdea2020.2/python_stubs/-1247971761:/home/kamil/.local/share/JetBrains/IntelliJIdea2020.2/python/helpers/python-skeletons:/home/kamil/.local/share/JetBrains/IntelliJIdea2020.2/python/helpers/typeshed/stdlib/3.7:/home/kamil/.local/share/JetBrains/IntelliJIdea2020.2/python/helpers/typeshed/stdlib/3:/home/kamil/.local/share/JetBrains/IntelliJIdea2020.2/python/helpers/typeshed/stdlib/2and3:/home/kamil/.local/share/JetBrains/IntelliJIdea2020.2/python/helpers/typeshed/third_party/3:/home/kamil/.local/share/JetBrains/IntelliJIdea2020.2/python/helpers/typeshed/third_party/2and3 pc.Driver",
   "scenarios": [
     {
-      "name": "Scenario 1",
+      "name": "1PNK",
+      "disabled": true,
+      "baseParameters": {
+        "producerFilePrefix": "producer",
+        "consumerFilePrefix": "consumer",
+        "producerCount": 1,
+        "consumerCount": 1,
+        "bufferSize": 100,
+        "maxUnitsRequest": 50,
+        "timeQuantum": 1,
+        "primaryTaskLength": 5,
+        "secondaryTaskLength": 5,
+        "requestsCount": 100,
+        "requestsSum": 1000
+      },
+      "runsNumber": 10,
+      "variants": [
+        {
+          "consumerCount": 1
+        },
+        {
+          "consumerCount": 2
+        },
+        {
+          "consumerCount": 3
+        },
+        {
+          "consumerCount": 4
+        },
+        {
+          "consumerCount": 5
+        },
+        {
+          "consumerCount": 6
+        },
+        {
+          "consumerCount": 7
+        }
+      ],
+      "axes": {
+        "x": "consumerCount"
+      }
+    },
+    {
+      "name": "1PNK10PL1SL",
+      "disabled": true,
+      "baseParameters": {
+        "producerFilePrefix": "producer",
+        "consumerFilePrefix": "consumer",
+        "producerCount": 1,
+        "consumerCount": 1,
+        "bufferSize": 100,
+        "maxUnitsRequest": 50,
+        "timeQuantum": 1,
+        "primaryTaskLength": 10,
+        "secondaryTaskLength": 1,
+        "requestsCount": 100,
+        "requestsSum": 1000
+      },
+      "runsNumber": 7,
+      "variants": [
+        {
+          "consumerCount": 1
+        },
+        {
+          "consumerCount": 2
+        },
+        {
+          "consumerCount": 3
+        },
+        {
+          "consumerCount": 4
+        },
+        {
+          "consumerCount": 5
+        },
+        {
+          "consumerCount": 6
+        },
+        {
+          "consumerCount": 7
+        }
+      ],
+      "axes": {
+        "x": "consumerCount"
+      }
+    },
+    {
+      "name": "10P-1PL-20SL",
       "disabled": true,
       "baseParameters": {
         "producerFilePrefix": "producer",
@@ -13,31 +101,31 @@
         "maxUnitsRequest": 50,
         "timeQuantum": 1,
         "primaryTaskLength": 1,
-        "secondaryTaskLength": 1,
-        "requestsCount": 200,
-        "requestsSum": 5000
+        "secondaryTaskLength": 20,
+        "requestsCount": 100,
+        "requestsSum": 1000
       },
-      "runsNumber": 7,
+      "runsNumber": 3,
       "variants": [
-        {
-          "requestsCount": 50,
-          "requestsSum": 500
-        },
         {
           "requestsCount": 100,
           "requestsSum": 1000
-        },
-        {
-          "requestsCount": 150,
-          "requestsSum": 1500
         },
         {
           "requestsCount": 200,
           "requestsSum": 2000
         },
         {
-          "requestsCount": 250,
-          "requestsSum": 2500
+          "requestsCount": 500,
+          "requestsSum": 5000
+        },
+        {
+          "requestsCount": 800,
+          "requestsSum": 8000
+        },
+        {
+          "requestsCount": 1100,
+          "requestsSum": 11000
         }
       ],
       "axes": {
@@ -45,7 +133,8 @@
       }
     },
     {
-      "name": "Scenario 3",
+      "name": "10P-20PL-1SL",
+      "disabled": true,
       "baseParameters": {
         "producerFilePrefix": "producer",
         "consumerFilePrefix": "consumer",
@@ -54,31 +143,518 @@
         "bufferSize": 100,
         "maxUnitsRequest": 50,
         "timeQuantum": 1,
+        "primaryTaskLength": 20,
+        "secondaryTaskLength": 1,
+        "requestsCount": 100,
+        "requestsSum": 1000
+      },
+      "runsNumber": 2,
+      "variants": [
+        {
+          "requestsCount": 100,
+          "requestsSum": 1000
+        },
+        {
+          "requestsCount": 200,
+          "requestsSum": 2000
+        },
+        {
+          "requestsCount": 500,
+          "requestsSum": 5000
+        },
+        {
+          "requestsCount": 800,
+          "requestsSum": 8000
+        },
+        {
+          "requestsCount": 1100,
+          "requestsSum": 11000
+        }
+      ],
+      "axes": {
+        "x": "requestsCount"
+      }
+    },
+    {
+      "name": "10P-20PL-400SL",
+      "disabled": true,
+      "baseParameters": {
+        "producerFilePrefix": "producer",
+        "consumerFilePrefix": "consumer",
+        "producerCount": 10,
+        "consumerCount": 10,
+        "bufferSize": 100,
+        "maxUnitsRequest": 50,
+        "timeQuantum": 1,
+        "primaryTaskLength": 20,
+        "secondaryTaskLength": 400,
+        "requestsCount": 100,
+        "requestsSum": 1000
+      },
+      "runsNumber": 2,
+      "variants": [
+        {
+          "requestsCount": 100,
+          "requestsSum": 1000
+        },
+        {
+          "requestsCount": 200,
+          "requestsSum": 2000
+        },
+        {
+          "requestsCount": 500,
+          "requestsSum": 5000
+        },
+        {
+          "requestsCount": 800,
+          "requestsSum": 8000
+        },
+        {
+          "requestsCount": 1100,
+          "requestsSum": 11000
+        }
+      ],
+      "axes": {
+        "x": "requestsCount"
+      }
+    },
+    {
+      "name": "10P-10PL-10SL",
+      "disabled": true,
+      "baseParameters": {
+        "producerFilePrefix": "producer",
+        "consumerFilePrefix": "consumer",
+        "producerCount": 10,
+        "consumerCount": 10,
+        "bufferSize": 100,
+        "maxUnitsRequest": 50,
+        "timeQuantum": 1,
+        "primaryTaskLength": 10,
+        "secondaryTaskLength": 10,
+        "requestsCount": 100,
+        "requestsSum": 1000
+      },
+      "runsNumber": 2,
+      "variants": [
+        {
+          "requestsCount": 100,
+          "requestsSum": 1000
+        },
+        {
+          "requestsCount": 200,
+          "requestsSum": 2000
+        },
+        {
+          "requestsCount": 500,
+          "requestsSum": 5000
+        },
+        {
+          "requestsCount": 800,
+          "requestsSum": 8000
+        },
+        {
+          "requestsCount": 1100,
+          "requestsSum": 11000
+        }
+      ],
+      "axes": {
+        "x": "requestsCount"
+      }
+    },
+    {
+      "name": "1P-1PL-20SL",
+      "disabled": true,
+      "baseParameters": {
+        "producerFilePrefix": "producer",
+        "consumerFilePrefix": "consumer",
+        "producerCount": 1,
+        "consumerCount": 1,
+        "bufferSize": 100,
+        "maxUnitsRequest": 50,
+        "timeQuantum": 1,
         "primaryTaskLength": 1,
-        "secondaryTaskLength": 50,
+        "secondaryTaskLength": 20,
+        "requestsCount": 100,
+        "requestsSum": 1000
+      },
+      "runsNumber": 3,
+      "variants": [
+        {
+          "requestsCount": 100,
+          "requestsSum": 1000
+        },
+        {
+          "requestsCount": 200,
+          "requestsSum": 2000
+        },
+        {
+          "requestsCount": 500,
+          "requestsSum": 5000
+        },
+        {
+          "requestsCount": 800,
+          "requestsSum": 8000
+        },
+        {
+          "requestsCount": 1100,
+          "requestsSum": 11000
+        }
+      ],
+      "axes": {
+        "x": "requestsCount"
+      }
+    },
+    {
+      "name": "1P-20PL-1SL",
+      "disabled": true,
+      "baseParameters": {
+        "producerFilePrefix": "producer",
+        "consumerFilePrefix": "consumer",
+        "producerCount": 1,
+        "consumerCount": 1,
+        "bufferSize": 100,
+        "maxUnitsRequest": 50,
+        "timeQuantum": 1,
+        "primaryTaskLength": 20,
+        "secondaryTaskLength": 1,
+        "requestsCount": 100,
+        "requestsSum": 1000
+      },
+      "runsNumber": 2,
+      "variants": [
+        {
+          "requestsCount": 100,
+          "requestsSum": 1000
+        },
+        {
+          "requestsCount": 200,
+          "requestsSum": 2000
+        },
+        {
+          "requestsCount": 500,
+          "requestsSum": 5000
+        },
+        {
+          "requestsCount": 800,
+          "requestsSum": 8000
+        },
+        {
+          "requestsCount": 1100,
+          "requestsSum": 11000
+        }
+      ],
+      "axes": {
+        "x": "requestsCount"
+      }
+    },
+    {
+      "name": "1P-10PL-10SL",
+      "disabled": true,
+      "baseParameters": {
+        "producerFilePrefix": "producer",
+        "consumerFilePrefix": "consumer",
+        "producerCount": 1,
+        "consumerCount": 1,
+        "bufferSize": 100,
+        "maxUnitsRequest": 50,
+        "timeQuantum": 1,
+        "primaryTaskLength": 10,
+        "secondaryTaskLength": 10,
+        "requestsCount": 100,
+        "requestsSum": 1000
+      },
+      "runsNumber": 2,
+      "variants": [
+        {
+          "requestsCount": 100,
+          "requestsSum": 1000
+        },
+        {
+          "requestsCount": 200,
+          "requestsSum": 2000
+        },
+        {
+          "requestsCount": 500,
+          "requestsSum": 5000
+        },
+        {
+          "requestsCount": 800,
+          "requestsSum": 8000
+        },
+        {
+          "requestsCount": 1100,
+          "requestsSum": 11000
+        }
+      ],
+      "axes": {
+        "x": "requestsCount"
+      }
+    },
+    {
+      "name": "5P-1PL-10SL",
+      "disabled": true,
+      "baseParameters": {
+        "producerFilePrefix": "producer",
+        "consumerFilePrefix": "consumer",
+        "producerCount": 5,
+        "consumerCount": 5,
+        "bufferSize": 100,
+        "maxUnitsRequest": 50,
+        "timeQuantum": 1,
+        "primaryTaskLength": 1,
+        "secondaryTaskLength": 10,
+        "requestsCount": 100,
+        "requestsSum": 1000
+      },
+      "runsNumber": 3,
+      "variants": [
+        {
+          "requestsCount": 100,
+          "requestsSum": 1000
+        },
+        {
+          "requestsCount": 200,
+          "requestsSum": 2000
+        },
+        {
+          "requestsCount": 500,
+          "requestsSum": 5000
+        },
+        {
+          "requestsCount": 800,
+          "requestsSum": 8000
+        },
+        {
+          "requestsCount": 1100,
+          "requestsSum": 11000
+        }
+      ],
+      "axes": {
+        "x": "requestsCount"
+      }
+    },
+    {
+      "name": "5P-10PL-1SL",
+      "disabled": true,
+      "baseParameters": {
+        "producerFilePrefix": "producer",
+        "consumerFilePrefix": "consumer",
+        "producerCount": 5,
+        "consumerCount": 5,
+        "bufferSize": 100,
+        "maxUnitsRequest": 50,
+        "timeQuantum": 1,
+        "primaryTaskLength": 10,
+        "secondaryTaskLength": 1,
+        "requestsCount": 100,
+        "requestsSum": 1000
+      },
+      "runsNumber": 2,
+      "variants": [
+        {
+          "requestsCount": 100,
+          "requestsSum": 1000
+        },
+        {
+          "requestsCount": 200,
+          "requestsSum": 2000
+        },
+        {
+          "requestsCount": 500,
+          "requestsSum": 5000
+        },
+        {
+          "requestsCount": 800,
+          "requestsSum": 8000
+        },
+        {
+          "requestsCount": 1100,
+          "requestsSum": 11000
+        }
+      ],
+      "axes": {
+        "x": "requestsCount"
+      }
+    },
+    {
+      "name": "5P-5PL-5SL",
+      "disabled": true,
+      "baseParameters": {
+        "producerFilePrefix": "producer",
+        "consumerFilePrefix": "consumer",
+        "producerCount": 5,
+        "consumerCount": 5,
+        "bufferSize": 100,
+        "maxUnitsRequest": 50,
+        "timeQuantum": 1,
+        "primaryTaskLength": 5,
+        "secondaryTaskLength": 5,
+        "requestsCount": 100,
+        "requestsSum": 1000
+      },
+      "runsNumber": 2,
+      "variants": [
+        {
+          "requestsCount": 100,
+          "requestsSum": 1000
+        },
+        {
+          "requestsCount": 200,
+          "requestsSum": 2000
+        },
+        {
+          "requestsCount": 500,
+          "requestsSum": 5000
+        },
+        {
+          "requestsCount": 800,
+          "requestsSum": 8000
+        },
+        {
+          "requestsCount": 1100,
+          "requestsSum": 11000
+        }
+      ],
+      "axes": {
+        "x": "requestsCount"
+      }
+    },
+    {
+      "name": "5P-NPL-MSL",
+      "disabled": true,
+      "baseParameters": {
+        "producerFilePrefix": "producer",
+        "consumerFilePrefix": "consumer",
+        "producerCount": 5,
+        "consumerCount": 5,
+        "bufferSize": 100,
+        "maxUnitsRequest": 50,
+        "timeQuantum": 1,
+        "primaryTaskLength": 5,
+        "secondaryTaskLength": 5,
+        "requestsCount": 500,
+        "requestsSum": 5000
+      },
+      "runsNumber": 7,
+      "variants": [
+        {
+          "primaryTaskLength": 1,
+          "secondaryTaskLength": 10
+        },
+        {
+          "primaryTaskLength": 1,
+          "secondaryTaskLength": 50
+        },
+        {
+          "primaryTaskLength": 1,
+          "secondaryTaskLength": 100
+        },
+        {
+          "primaryTaskLength": 5,
+          "secondaryTaskLength": 10
+        },
+        {
+          "primaryTaskLength": 5,
+          "secondaryTaskLength": 50
+        },
+        {
+          "primaryTaskLength": 5,
+          "secondaryTaskLength": 100
+        },
+        {
+          "primaryTaskLength": 10,
+          "secondaryTaskLength": 10
+        },
+        {
+          "primaryTaskLength": 10,
+          "secondaryTaskLength": 50
+        },
+        {
+          "primaryTaskLength": 10,
+          "secondaryTaskLength": 100
+        }
+      ],
+      "axes": {
+        "x": "primaryTaskLength",
+        "y": "secondaryTaskLength"
+      }
+    },
+    {
+      "name": "MURQ",
+      "disabled": true,
+      "baseParameters": {
+        "producerFilePrefix": "producer",
+        "consumerFilePrefix": "consumer",
+        "producerCount": 5,
+        "consumerCount": 5,
+        "bufferSize": 100,
+        "maxUnitsRequest": 1,
+        "timeQuantum": 1,
+        "primaryTaskLength": 5,
+        "secondaryTaskLength": 5,
+        "requestsCount": 500,
+        "requestsSum": 500
+      },
+      "runsNumber": 7,
+      "variants": [
+        {
+          "maxUnitsRequest": 1,
+          "requestsSum": 500
+        },
+        {
+          "maxUnitsRequest": 5,
+          "requestsSum": 1250
+        },
+        {
+          "maxUnitsRequest": 10,
+          "requestsSum": 2500
+        },
+        {
+          "maxUnitsRequest": 25,
+          "requestsSum": 6250
+        },
+        {
+          "maxUnitsRequest": 50,
+          "requestsSum": 12500
+        }
+      ],
+      "axes": {
+        "x": "maxUnitsRequest"
+      }
+    },
+    {
+      "name": "TQ",
+      "disabled": false,
+      "baseParameters": {
+        "producerFilePrefix": "producer",
+        "consumerFilePrefix": "consumer",
+        "producerCount": 5,
+        "consumerCount": 5,
+        "bufferSize": 100,
+        "maxUnitsRequest": 50,
+        "timeQuantum": 1,
+        "primaryTaskLength": 10,
+        "secondaryTaskLength": 10,
         "requestsCount": 100,
         "requestsSum": 1000
       },
       "runsNumber": 7,
       "variants": [
         {
-          "primaryTaskLength": 1
+          "timeQuantum": 1
         },
         {
-          "primaryTaskLength": 5
+          "timeQuantum": 5
         },
         {
-          "primaryTaskLength": 10
+          "timeQuantum": 10
         },
         {
-          "primaryTaskLength": 15
-        },
-        {
-          "primaryTaskLength": 20
+          "timeQuantum": 15
         }
       ],
       "axes": {
-        "x": "primaryTaskLength"
+        "x": "timeQuantum"
       }
     }
   ]

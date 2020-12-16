@@ -26,7 +26,6 @@ public abstract class Worker implements Runnable {
             int unitsCount = generator.getNextOrder();
             Future future = doPrimaryWork(unitsCount);
             int secondaryTaskLengthLeft = secondaryTaskLength - secondaryTaskLeftover;
-            int taskQuantum = 1;
             while (!future.isAvailable()) {
                 doSecondaryWork(taskQuantum);
                 secondaryTaskLengthLeft -= taskQuantum;

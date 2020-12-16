@@ -1,0 +1,369 @@
+{
+  "java": "/home/kamil/.jdks/openjdk-15/bin/java -javaagent:/opt/idea-IU-202.7660.26/lib/idea_rt.jar=42221:/opt/idea-IU-202.7660.26/bin -Dfile.encoding=UTF-8 -classpath /home/kamil/studia/5_semestr/tw/laby/out/production/laby:/usr/lib/python3.8:/usr/lib/python3.8/lib-dynload:/usr/local/lib/python3.8/dist-packages:/usr/lib/python3/dist-packages:/home/kamil/.cache/JetBrains/IntelliJIdea2020.2/python_stubs/-1247971761:/home/kamil/.local/share/JetBrains/IntelliJIdea2020.2/python/helpers/python-skeletons:/home/kamil/.local/share/JetBrains/IntelliJIdea2020.2/python/helpers/typeshed/stdlib/3.7:/home/kamil/.local/share/JetBrains/IntelliJIdea2020.2/python/helpers/typeshed/stdlib/3:/home/kamil/.local/share/JetBrains/IntelliJIdea2020.2/python/helpers/typeshed/stdlib/2and3:/home/kamil/.local/share/JetBrains/IntelliJIdea2020.2/python/helpers/typeshed/third_party/3:/home/kamil/.local/share/JetBrains/IntelliJIdea2020.2/python/helpers/typeshed/third_party/2and3 pc.Driver",
+  "scenarios": [
+    {
+      "name": "1P1K1PL1SL",
+      "disabled": true,
+      "baseParameters": {
+        "producerFilePrefix": "producer",
+        "consumerFilePrefix": "consumer",
+        "producerCount": 1,
+        "consumerCount": 1,
+        "bufferSize": 100,
+        "maxUnitsRequest": 50,
+        "timeQuantum": 1,
+        "primaryTaskLength": 5,
+        "secondaryTaskLength": 5,
+        "requestsCount": 500,
+        "requestsSum": 5000
+      },
+      "runsNumber": 5,
+      "testValues": {
+        "primaryTaskLength": [1, 3, 5, 7, 9],
+        "secondaryTaskLength": [1, 3, 5, 7, 9]
+      },
+      "axes": {
+        "x": "primaryTaskLength",
+        "y": "secondaryTaskLength"
+      }
+    },
+    {
+      "name": "1P1K1PL10SL",
+      "disabled": true,
+      "baseParameters": {
+        "producerFilePrefix": "producer",
+        "consumerFilePrefix": "consumer",
+        "producerCount": 1,
+        "consumerCount": 1,
+        "bufferSize": 100,
+        "maxUnitsRequest": 50,
+        "timeQuantum": 1,
+        "primaryTaskLength": 5,
+        "secondaryTaskLength": 5,
+        "requestsCount": 500,
+        "requestsSum": 5000
+      },
+      "runsNumber": 5,
+      "testValues": {
+        "primaryTaskLength": [1, 3, 5, 7, 9],
+        "secondaryTaskLength": [10, 30, 50, 70, 90]
+      },
+      "axes": {
+        "x": "primaryTaskLength",
+        "y": "secondaryTaskLength"
+      }
+    },
+    {
+      "name": "2P2K1PL1SL",
+      "disabled": false,
+      "baseParameters": {
+        "producerFilePrefix": "producer",
+        "consumerFilePrefix": "consumer",
+        "producerCount": 2,
+        "consumerCount": 2,
+        "bufferSize": 100,
+        "maxUnitsRequest": 50,
+        "timeQuantum": 1,
+        "primaryTaskLength": 5,
+        "secondaryTaskLength": 5,
+        "requestsCount": 500,
+        "requestsSum": 5000
+      },
+      "runsNumber": 5,
+      "testValues": {
+        "primaryTaskLength": [1, 3, 5, 7, 9],
+        "secondaryTaskLength": [1, 3, 5, 7, 9]
+      },
+      "axes": {
+        "x": "primaryTaskLength",
+        "y": "secondaryTaskLength"
+      }
+    },
+    {
+      "name": "2P2K1PL10SL",
+      "disabled": true,
+      "baseParameters": {
+        "producerFilePrefix": "producer",
+        "consumerFilePrefix": "consumer",
+        "producerCount": 2,
+        "consumerCount": 2,
+        "bufferSize": 100,
+        "maxUnitsRequest": 50,
+        "timeQuantum": 1,
+        "primaryTaskLength": 5,
+        "secondaryTaskLength": 5,
+        "requestsCount": 500,
+        "requestsSum": 5000
+      },
+      "runsNumber": 5,
+      "testValues": {
+        "primaryTaskLength": [1, 3, 5, 7, 9],
+        "secondaryTaskLength": [10, 30, 50, 70, 90]
+      },
+      "axes": {
+        "x": "primaryTaskLength",
+        "y": "secondaryTaskLength"
+      }
+    },
+    {
+      "name": "5P5K1PL1SL",
+      "disabled": false,
+      "baseParameters": {
+        "producerFilePrefix": "producer",
+        "consumerFilePrefix": "consumer",
+        "producerCount": 5,
+        "consumerCount": 5,
+        "bufferSize": 100,
+        "maxUnitsRequest": 50,
+        "timeQuantum": 1,
+        "primaryTaskLength": 5,
+        "secondaryTaskLength": 5,
+        "requestsCount": 500,
+        "requestsSum": 5000
+      },
+      "runsNumber": 5,
+      "testValues": {
+        "primaryTaskLength": [1, 3, 5, 7, 9],
+        "secondaryTaskLength": [1, 3, 5, 7, 9]
+      },
+      "axes": {
+        "x": "primaryTaskLength",
+        "y": "secondaryTaskLength"
+      }
+    },
+    {
+      "name": "5P5K1PL10SL",
+      "disabled": true,
+      "baseParameters": {
+        "producerFilePrefix": "producer",
+        "consumerFilePrefix": "consumer",
+        "producerCount": 5,
+        "consumerCount": 5,
+        "bufferSize": 100,
+        "maxUnitsRequest": 50,
+        "timeQuantum": 1,
+        "primaryTaskLength": 5,
+        "secondaryTaskLength": 5,
+        "requestsCount": 500,
+        "requestsSum": 5000
+      },
+      "runsNumber": 5,
+      "testValues": {
+        "primaryTaskLength": [1, 3, 5, 7, 9],
+        "secondaryTaskLength": [10, 30, 50, 70, 90]
+      },
+      "axes": {
+        "x": "primaryTaskLength",
+        "y": "secondaryTaskLength"
+      }
+    },
+    {
+      "name": "10P10K1PL1SL",
+      "disabled": false,
+      "baseParameters": {
+        "producerFilePrefix": "producer",
+        "consumerFilePrefix": "consumer",
+        "producerCount": 10,
+        "consumerCount": 10,
+        "bufferSize": 100,
+        "maxUnitsRequest": 50,
+        "timeQuantum": 1,
+        "primaryTaskLength": 5,
+        "secondaryTaskLength": 5,
+        "requestsCount": 500,
+        "requestsSum": 5000
+      },
+      "runsNumber": 5,
+      "testValues": {
+        "primaryTaskLength": [1, 3, 5, 7, 9],
+        "secondaryTaskLength": [1, 3, 5, 7, 9]
+      },
+      "axes": {
+        "x": "primaryTaskLength",
+        "y": "secondaryTaskLength"
+      }
+    },
+    {
+      "name": "10P10K1PL10SL",
+      "disabled": false,
+      "baseParameters": {
+        "producerFilePrefix": "producer",
+        "consumerFilePrefix": "consumer",
+        "producerCount": 10,
+        "consumerCount": 10,
+        "bufferSize": 100,
+        "maxUnitsRequest": 50,
+        "timeQuantum": 1,
+        "primaryTaskLength": 5,
+        "secondaryTaskLength": 5,
+        "requestsCount": 500,
+        "requestsSum": 5000
+      },
+      "runsNumber": 5,
+      "testValues": {
+        "primaryTaskLength": [1, 3, 5, 7, 9],
+        "secondaryTaskLength": [10, 30, 50, 70, 90]
+      },
+      "axes": {
+        "x": "primaryTaskLength",
+        "y": "secondaryTaskLength"
+      }
+    },
+    {
+      "name": "1PNKRQ",
+      "disabled": false,
+      "baseParameters": {
+        "producerFilePrefix": "producer",
+        "consumerFilePrefix": "consumer",
+        "producerCount": 1,
+        "consumerCount": 5,
+        "bufferSize": 100,
+        "maxUnitsRequest": 50,
+        "timeQuantum": 1,
+        "primaryTaskLength": 5,
+        "secondaryTaskLength": 5,
+        "requestsCount": 100,
+        "requestsSum": 1000
+      },
+      "runsNumber": 5,
+      "testValues": {
+        "consumerCount": [1, 2, 5, 7, 10],
+        "requestsCount": [100, 200, 500, 700, 1000]
+      },
+      "axes": {
+        "x": "consumerCount",
+        "y": "requestsCount"
+      }
+    },
+    {
+      "name": "1PNKPL1SL",
+      "disabled": false,
+      "baseParameters": {
+        "producerFilePrefix": "producer",
+        "consumerFilePrefix": "consumer",
+        "producerCount": 1,
+        "consumerCount": 5,
+        "bufferSize": 100,
+        "maxUnitsRequest": 50,
+        "timeQuantum": 1,
+        "primaryTaskLength": 5,
+        "secondaryTaskLength": 1,
+        "requestsCount": 500,
+        "requestsSum": 5000
+      },
+      "runsNumber": 5,
+      "testValues": {
+        "consumerCount": [1, 2, 5, 7, 10],
+        "primaryTaskLength": [1, 2, 5, 7, 10]
+      },
+      "axes": {
+        "x": "consumerCount",
+        "y": "primaryTaskLength"
+      }
+    },
+    {
+      "name": "1PNKPL10SL",
+      "disabled": false,
+      "baseParameters": {
+        "producerFilePrefix": "producer",
+        "consumerFilePrefix": "consumer",
+        "producerCount": 1,
+        "consumerCount": 5,
+        "bufferSize": 100,
+        "maxUnitsRequest": 50,
+        "timeQuantum": 1,
+        "primaryTaskLength": 5,
+        "secondaryTaskLength": 10,
+        "requestsCount": 500,
+        "requestsSum": 5000
+      },
+      "runsNumber": 5,
+      "testValues": {
+        "consumerCount": [1, 2, 5, 7, 10],
+        "primaryTaskLength": [1, 2, 5, 7, 10]
+      },
+      "axes": {
+        "x": "consumerCount",
+        "y": "primaryTaskLength"
+      }
+    },
+    {
+      "name": "1PNK1PLSL",
+      "disabled": false,
+      "baseParameters": {
+        "producerFilePrefix": "producer",
+        "consumerFilePrefix": "consumer",
+        "producerCount": 1,
+        "consumerCount": 5,
+        "bufferSize": 100,
+        "maxUnitsRequest": 50,
+        "timeQuantum": 1,
+        "primaryTaskLength": 1,
+        "secondaryTaskLength": 1,
+        "requestsCount": 500,
+        "requestsSum": 5000
+      },
+      "runsNumber": 5,
+      "testValues": {
+        "consumerCount": [1, 2, 5, 7, 10],
+        "secondaryTaskLength": [1, 2, 5, 7, 10]
+      },
+      "axes": {
+        "x": "consumerCount",
+        "y": "secondaryTaskLength"
+      }
+    },
+    {
+      "name": "1PNK10PLSL",
+      "disabled": false,
+      "baseParameters": {
+        "producerFilePrefix": "producer",
+        "consumerFilePrefix": "consumer",
+        "producerCount": 1,
+        "consumerCount": 5,
+        "bufferSize": 100,
+        "maxUnitsRequest": 50,
+        "timeQuantum": 1,
+        "primaryTaskLength": 10,
+        "secondaryTaskLength": 10,
+        "requestsCount": 500,
+        "requestsSum": 5000
+      },
+      "runsNumber": 5,
+      "testValues": {
+        "consumerCount": [1, 2, 5, 7, 10],
+        "secondaryTaskLength": [1, 2, 5, 7, 10]
+      },
+      "axes": {
+        "x": "consumerCount",
+        "y": "secondaryTaskLength"
+      }
+    },
+    {
+      "name": "SLRC",
+      "disabled": true,
+      "baseParameters": {
+        "producerFilePrefix": "producer",
+        "consumerFilePrefix": "consumer",
+        "producerCount": 5,
+        "consumerCount": 5,
+        "bufferSize": 100,
+        "maxUnitsRequest": 50,
+        "timeQuantum": 1,
+        "primaryTaskLength": 5,
+        "secondaryTaskLength": 5,
+        "requestsCount": 100,
+        "requestsSum": 1000
+      },
+      "runsNumber": 5,
+      "testValues": {
+        "secondaryTaskLength": [10, 30, 50, 70, 90],
+        "requestsCount": [100, 300, 500, 700, 900]
+      },
+      "axes": {
+        "x": "secondaryTaskLength",
+        "y": "requestsCount"
+      }
+    }
+  ]
+}
